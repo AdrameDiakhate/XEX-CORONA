@@ -2,18 +2,26 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\FAQ;
-use App\Entity\Sensibilisation;
 use App\Entity\Cas;
+use App\Entity\Faq;
 use App\Entity\Lieu;
+use App\Entity\Role;
+use App\Entity\User;
+use App\Entity\Sensibilisation;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class CoronaFixtures extends Fixture
 {
+       private $encoder;
+       public function __construct(UserPasswordEncoderInterface $encoder)
+       {
+       $this->encoder = $encoder;
+       }
     public function load(ObjectManager $manager)
-    {
-         $faq = new FAQ();
+    {         
+         $faq = new Faq();
          $faq->setQuestion("Comment se transmet le coronavirus?");
          $faq->setReponse("Elle se transmet par contact avec une personne porteuse du covid.");         
          $manager->persist($faq);
@@ -71,13 +79,33 @@ class CoronaFixtures extends Fixture
          $manager->persist($lieu);
 
          $cas=new Cas();
-              $cas->setTotalGueris("30");
               $cas->setLieu($lieu);
-              $cas->setNewCaseToday(5);
-              $cas->setTotalCases(34);
-              $cas->setNewDeathToday(0);
-              $cas->setTotalDeaths(0);
+              $cas->setNouveauCas(5);
+              $cas->setTotalCas(34);
+              $cas->setNouveauDeces(01);
+              $cas->setTotalDeces(01);
+              $cas->setTotalGueris(30);
         $manager->persist($cas);
+
+        $role1=new Role();
+        $role1->setLibelle("ADMIN_SYSTEM");
+        $manager->persist($role1);
+
+        $role2=new Role();
+        $role2->setLibelle("ADMIN");
+        $manager->persist($role2);
+
+
+        $user=new User();
+        $user->setUsername("AdaDiakhate");
+        $password=$this->encoder->encodePassword($user,'admin221');
+        $user->setPassword($password);
+        $user->setPrenom("Diakhaté");
+        $user->setNom("Adramé");
+        $user->setTelephone(778452440);
+        $user->setRole($role1);
+
+        $manager->persist($user);
 
 
         $manager->flush();
