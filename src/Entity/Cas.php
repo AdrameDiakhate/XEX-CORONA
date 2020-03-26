@@ -43,6 +43,31 @@ class Cas
      * @ORM\JoinColumn(nullable=false)
      */
     private $lieu;
+    
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $date;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $cas_contacts;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $cas_communautaires;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $cas_importes;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $nouveaux_gueris;
 
     /**
      * @ORM\Column(type="integer")
@@ -113,15 +138,74 @@ class Cas
 
         return $this;
     }
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    public function getCasContacts(): ?int
+    {
+        return $this->cas_contacts;
+    }
+
+    public function setCasContacts(int $cas_contacts): self
+    {
+        $this->cas_contacts = $cas_contacts;
+
+        return $this;
+    }
+
+    public function getCasCommunautaires(): ?int
+    {
+        return $this->cas_communautaires;
+    }
+
+    public function setCasCommunautaires(int $cas_communautaires): self
+    {
+        $this->cas_communautaires = $cas_communautaires;
+
+        return $this;
+    }
+
+    public function getCasImportes(): ?int
+    {
+        return $this->cas_importes;
+    }
+
+    public function setCasImportes(int $cas_importes): self
+    {
+        $this->cas_importes = $cas_importes;
+
+        return $this;
+    }
+
+    public function getNouveauxGueris(): ?int
+    {
+        return $this->nouveaux_gueris;
+    }
+
+    public function setNouveauxGueris(int $nouveaux_gueris): self
+    {
+        $this->nouveaux_gueris = $nouveaux_gueris;
+
+        return $this;
+    }
 
     public function getTotalGueris(): ?int
     {
-        return $this->totalGueris;
+        return $this->total_gueris;
     }
 
-    public function setTotalGueris(int $totalGueris): self
+    public function setTotalGueris(int $total_gueris): self
     {
-        $this->totalGueris = $totalGueris;
+        $this->total_gueris = $total_gueris;
 
         return $this;
     }
