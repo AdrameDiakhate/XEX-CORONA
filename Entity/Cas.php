@@ -6,7 +6,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ *@ApiResource
  * @ORM\Entity(repositoryClass="App\Repository\CasRepository")
  */
 class Cas
@@ -21,28 +21,46 @@ class Cas
     /**
      * @ORM\Column(type="integer")
      */
-    private $new_case_today;
+    private $nouveau_cas;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $total_cases;
+    private $total_cas;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $new_death_today;
+    private $nouveau_deces;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $total_deaths;
+    private $total_deces;
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $date;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Lieu", inversedBy="cas")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="integer")
      */
-    private $lieu;
+    private $cas_contacts;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $cas_communautaires;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $cas_importes;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $nouveaux_gueris;
 
     /**
      * @ORM\Column(type="integer")
@@ -54,74 +72,120 @@ class Cas
         return $this->id;
     }
 
-    public function getNewCaseToday(): ?int
+    public function getNouveauCas(): ?int
     {
-        return $this->new_case_today;
+        return $this->nouveau_cas;
     }
 
-    public function setNewCaseToday(int $new_case_today): self
+    public function setNouveauCas(int $nouveau_cas): self
     {
-        $this->new_case_today = $new_case_today;
+        $this->nouveau_cas = $nouveau_cas;
 
         return $this;
     }
 
-    public function getTotalCases(): ?int
+    public function getTotalCas(): ?int
     {
-        return $this->total_cases;
+        return $this->total_cas;
     }
 
-    public function setTotalCases(int $total_cases): self
+    public function setTotalCas(int $total_cas): self
     {
-        $this->total_cases = $total_cases;
+        $this->total_cas = $total_cas;
 
         return $this;
     }
 
-    public function getNewDeathToday(): ?int
+    public function getNouveauDeces(): ?int
     {
-        return $this->new_death_today;
+        return $this->nouveau_deces;
     }
 
-    public function setNewDeathToday(int $new_death_today): self
+    public function setNouveauDeces(int $nouveau_deces): self
     {
-        $this->new_death_today = $new_death_today;
+        $this->nouveau_deces = $nouveau_deces;
 
         return $this;
     }
 
-    public function getTotalDeaths(): ?int
+    public function getTotalDeces(): ?int
     {
-        return $this->total_deaths;
+        return $this->total_deces;
     }
 
-    public function setTotalDeaths(int $total_deaths): self
+    public function setTotalDeces(int $total_deces): self
     {
-        $this->total_deaths = $total_deaths;
+        $this->total_deces = $total_deces;
+
+        return $this;
+    }
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }
 
-    public function getLieu(): ?Lieu
+    public function getCasContacts(): ?int
     {
-        return $this->lieu;
+        return $this->cas_contacts;
     }
 
-    public function setLieu(?Lieu $lieu): self
+    public function setCasContacts(int $cas_contacts): self
     {
-        $this->lieu = $lieu;
+        $this->cas_contacts = $cas_contacts;
+
+        return $this;
+    }
+
+    public function getCasCommunautaires(): ?int
+    {
+        return $this->cas_communautaires;
+    }
+
+    public function setCasCommunautaires(int $cas_communautaires): self
+    {
+        $this->cas_communautaires = $cas_communautaires;
+
+        return $this;
+    }
+
+    public function getCasImportes(): ?int
+    {
+        return $this->cas_importes;
+    }
+
+    public function setCasImportes(int $cas_importes): self
+    {
+        $this->cas_importes = $cas_importes;
+
+        return $this;
+    }
+
+    public function getNouveauxGueris(): ?int
+    {
+        return $this->nouveaux_gueris;
+    }
+
+    public function setNouveauxGueris(int $nouveaux_gueris): self
+    {
+        $this->nouveaux_gueris = $nouveaux_gueris;
 
         return $this;
     }
 
     public function getTotalGueris(): ?int
     {
-        return $this->totalGueris;
+        return $this->total_gueris;
     }
 
-    public function setTotalGueris(int $totalGueris): self
+    public function setTotalGueris(int $total_gueris): self
     {
-        $this->totalGueris = $totalGueris;
+        $this->total_gueris = $total_gueris;
 
         return $this;
     }
