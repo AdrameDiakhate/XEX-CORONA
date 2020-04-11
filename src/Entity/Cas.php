@@ -6,7 +6,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ *@ApiResource
  * @ORM\Entity(repositoryClass="App\Repository\CasRepository")
  */
 class Cas
@@ -37,13 +37,6 @@ class Cas
      * @ORM\Column(type="integer")
      */
     private $total_deces;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Lieu", inversedBy="cas")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $lieu;
-    
     /**
      * @ORM\Column(type="date")
      */
@@ -126,23 +119,10 @@ class Cas
 
         return $this;
     }
-
-    public function getLieu(): ?Lieu
-    {
-        return $this->lieu;
-    }
-
-    public function setLieu(?Lieu $lieu): self
-    {
-        $this->lieu = $lieu;
-
-        return $this;
-    }
     public function getDate(): ?\DateTimeInterface
     {
         return $this->date;
     }
-
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
