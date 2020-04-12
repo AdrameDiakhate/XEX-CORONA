@@ -41,22 +41,6 @@ class Cas
      * @ORM\Column(type="date")
      */
     private $date;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $cas_contacts;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $cas_communautaires;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $cas_importes;
-
     /**
      * @ORM\Column(type="integer")
      */
@@ -66,6 +50,36 @@ class Cas
      * @ORM\Column(type="integer")
      */
     private $total_gueris;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $nouveauxcontacts;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $totalcontacts;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $nouveaucommunautaire;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $totalcommunautaire;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $nouveauximportes;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $totalimportes;
 
     public function getId(): ?int
     {
@@ -129,43 +143,6 @@ class Cas
 
         return $this;
     }
-
-    public function getCasContacts(): ?int
-    {
-        return $this->cas_contacts;
-    }
-
-    public function setCasContacts(int $cas_contacts): self
-    {
-        $this->cas_contacts = $cas_contacts;
-
-        return $this;
-    }
-
-    public function getCasCommunautaires(): ?int
-    {
-        return $this->cas_communautaires;
-    }
-
-    public function setCasCommunautaires(int $cas_communautaires): self
-    {
-        $this->cas_communautaires = $cas_communautaires;
-
-        return $this;
-    }
-
-    public function getCasImportes(): ?int
-    {
-        return $this->cas_importes;
-    }
-
-    public function setCasImportes(int $cas_importes): self
-    {
-        $this->cas_importes = $cas_importes;
-
-        return $this;
-    }
-
     public function getNouveauxGueris(): ?int
     {
         return $this->nouveaux_gueris;
@@ -186,6 +163,78 @@ class Cas
     public function setTotalGueris(int $total_gueris): self
     {
         $this->total_gueris = $total_gueris;
+
+        return $this;
+    }
+
+    public function getNouveauxcontacts(): ?int
+    {
+        return $this->nouveauxcontacts;
+    }
+
+    public function setNouveauxcontacts(int $nouveauxcontacts): self
+    {
+        $this->nouveauxcontacts = $nouveauxcontacts;
+
+        return $this;
+    }
+
+    public function getTotalcontacts(): ?int
+    {
+        return $this->totalcontacts;
+    }
+
+    public function setTotalcontacts(?int $totalcontacts): self
+    {
+        $this->totalcontacts = $totalcontacts;
+
+        return $this;
+    }
+
+    public function getNouveaucommunautaire(): ?int
+    {
+        return $this->nouveaucommunautaire;
+    }
+
+    public function setNouveaucommunautaire(?int $nouveaucommunautaire): self
+    {
+        $this->nouveaucommunautaire = $nouveaucommunautaire;
+
+        return $this;
+    }
+
+    public function getTotalcommunautaire(): ?int
+    {
+        return $this->totalcommunautaire;
+    }
+
+    public function setTotalcommunautaire(?int $totalcommunautaire): self
+    {
+        $this->totalcommunautaire = $totalcommunautaire;
+
+        return $this;
+    }
+
+    public function getNouveauximportes(): ?int
+    {
+        return $this->nouveauximportes;
+    }
+
+    public function setNouveauximportes(?int $nouveauximportes): self
+    {
+        $this->nouveauximportes = $nouveauximportes;
+
+        return $this;
+    }
+
+    public function getTotalimportes(): ?int
+    {
+        return $this->totalimportes;
+    }
+
+    public function setTotalimportes(?int $totalimportes): self
+    {
+        $this->totalimportes = $totalimportes;
 
         return $this;
     }
