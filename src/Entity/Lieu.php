@@ -24,11 +24,6 @@ class Lieu
      * @ORM\Column(type="string", length=255)
      */
     private $region;
-    public function __construct()
-    {
-        $this->cas = new ArrayCollection();
-    }
-
     public function getId(): ?int
     {
         return $this->id;
