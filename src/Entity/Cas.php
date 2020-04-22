@@ -81,6 +81,16 @@ class Cas
      */
     private $totalimportes;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $nouveauSousTraitement;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $totalSousTraitement;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -235,6 +245,30 @@ class Cas
     public function setTotalimportes(?int $totalimportes): self
     {
         $this->totalimportes = $totalimportes;
+
+        return $this;
+    }
+
+    public function getNouveauSousTraitement(): ?int
+    {
+        return $this->nouveauSousTraitement;
+    }
+
+    public function setNouveauSousTraitement(int $nouveauSousTraitement): self
+    {
+        $this->nouveauSousTraitement = $nouveauSousTraitement;
+
+        return $this;
+    }
+
+    public function getTotalSousTraitement(): ?int
+    {
+        return $this->totalSousTraitement;
+    }
+
+    public function setTotalSousTraitement(int $totalSousTraitement): self
+    {
+        $this->totalSousTraitement = $totalSousTraitement;
 
         return $this;
     }
